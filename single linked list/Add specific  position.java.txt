@@ -1,0 +1,77 @@
+
+import org.w3c.dom.Node;
+class test{
+  Node Hade;
+  class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+      this.data=data;
+      this.next=null;
+    }
+  }
+  public void AddItem(int data){
+    Node NewNode=new Node(data);
+    if(Hade==null){
+      Hade=NewNode;
+      return;
+    }
+    NewNode.next=Hade;
+    Hade=NewNode;
+  }
+
+  //Add_specific_position Function
+  public void Add_specific_position(int Item,int location){
+    Node newNode=new Node(Item);
+    newNode.next=null;
+    if(location<1){
+      System.out.println("InValied Location");
+      return;
+    }
+    else if(location==1){
+      newNode.next=Hade;
+      Hade=newNode;
+    }
+    else{
+      Node CurrentNode=Hade;
+      for(int i=1;i<location-1;i++){
+        if(CurrentNode.next!=null){
+          CurrentNode=CurrentNode.next;
+        }
+      }
+      if(CurrentNode.next!=null){
+        newNode.next=CurrentNode.next;
+        CurrentNode.next=newNode;
+      }
+      else{
+        System.out.println("Invalied!");
+        return;
+      }
+    }
+  }
+
+  //Display
+  public void Display(){
+    if(Hade==null){
+      System.out.println("List is empty");
+      return;
+    }
+    Node currentNode=Hade;
+    while(currentNode!=null){
+      System.out.print(currentNode.data+"->");
+      currentNode=currentNode.next;
+    }
+    System.out.println("Null");
+  }
+  public static void main(String[] args) {
+    test tt=new test();
+    tt.AddItem(5);
+    tt.AddItem(3);
+    tt.AddItem(2);
+    tt.AddItem(1);
+    tt.Display();
+    tt.Add_specific_position(4, 4);
+    tt.Display();
+  }
+}

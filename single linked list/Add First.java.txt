@@ -1,0 +1,50 @@
+import org.w3c.dom.Node;
+
+class test{
+  Node hade;
+
+ class Node{
+
+  int data;
+  Node next;
+
+  Node(int data){
+    this.data=data;
+    this.next=null;
+  }
+}
+
+  //Add function
+  public void add(int data){
+    Node newNode=new Node(data);
+    if(hade==null){
+      hade=newNode;
+      return;
+    }
+    newNode.next=hade;
+    hade=newNode;
+  }
+  
+//Display function
+  public void Print(){
+    if(hade==null){
+      System.out.println("Empty List");
+      return;
+    }
+    Node CurrentNode=hade;
+    while(CurrentNode!=null){
+      System.out.print(CurrentNode.data+"->");
+      CurrentNode=CurrentNode.next;
+    }
+    System.out.println("Null");
+  }
+
+
+  public static void main(String[] args) {
+    test tt=new test();
+    tt.add(3);
+    tt.add(2);
+    tt.add(1);
+    tt.Print();
+  }
+}

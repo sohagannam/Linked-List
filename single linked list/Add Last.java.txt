@@ -1,0 +1,58 @@
+import org.w3c.dom.Node;
+//Main Class
+class test{
+
+  Node Hade;
+  //Node Class
+  class Node{
+    int data;
+    Node next;
+    
+   //Node class Constructor
+    Node(int data){
+      this.data=data;
+      this.next=null;
+    }
+  }
+  //Add_Last Function
+  public void Addlast(int data){
+    Node NewNode=new Node(data);
+    if(Hade==null){
+      Hade=NewNode;
+      return;
+    }
+    Node currentNode=Hade;
+    while(currentNode.next!=null){
+      currentNode=currentNode.next;
+    }
+    currentNode.next=NewNode;
+
+  }
+
+  //Display Function
+  public void Print(){
+    if(Hade==null){
+      System.out.println("List is Empty");
+      return;
+    }
+    Node CurrentNode=Hade;
+    while(CurrentNode!=null){
+      System.out.print(CurrentNode.data+"->");
+      CurrentNode=CurrentNode.next;
+    }
+    System.out.println("Null");
+  }
+  
+  //Main Function
+
+  public static void main(String[] args) {
+    test tt=new test();
+    tt.Addlast(1);
+    tt.Addlast(2);
+    tt.Addlast(3);
+    tt.Print();
+  }
+
+  
+
+}
