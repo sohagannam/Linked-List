@@ -1,0 +1,69 @@
+class test{
+  Node hade;
+
+  class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+      this.data=data;
+      this.next=null;
+    }
+  }
+  public void AddItem(int data){
+    Node newNode=new Node(data);
+    if(hade==null){
+      hade=newNode;
+      return;
+    }
+    newNode.next=hade;
+    hade=newNode;
+  }
+  public void Display(){
+    if(hade==null){
+      System.out.println("List is empty");
+      return;
+    }
+    Node currentNode=hade;
+    while(currentNode!=null){
+      System.out.print(currentNode.data+"->");
+      currentNode=currentNode.next;
+    }
+    System.out.println("Null");
+  }
+  //Search Function
+  public void search(int key){
+    int i=1;
+    boolean flag=false;
+    if(hade==null){
+      System.out.println("List is empty");
+      return;
+    }
+    Node currentNode=hade;
+    while(currentNode!=null){
+      if(currentNode.data==key){
+        flag=true;
+        break;
+      }
+      currentNode=currentNode.next;
+      i++;
+    }
+    if(flag){
+      System.out.println(key+" "+"Item is found at "+i);
+    }
+    else{
+      System.out.println(key+" "+" not found");
+    }
+  }
+  public static void main(String[] args) {
+    test tt=new test();
+    tt.AddItem(2);
+    tt.AddItem(5);
+    tt.AddItem(12);
+    tt.AddItem(56);
+    tt.Display();
+    //Call_Search_function
+    tt.search(100);
+    tt.Display();
+  }
+}
