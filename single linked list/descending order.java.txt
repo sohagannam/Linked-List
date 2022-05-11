@@ -1,0 +1,75 @@
+class test{
+  Node hade;
+  class Node{
+    int data;
+    Node next;
+
+    Node(int data){
+      this.data=data;
+      this.next=null;
+    }
+  }
+
+
+  public void Add(int data){
+    Node newNode=new Node(data);
+    if(hade==null){
+      hade=newNode;
+      return;
+    }
+    Node currentNode=hade;
+    while(currentNode.next!=null){
+      currentNode=currentNode.next;
+    }
+    currentNode.next=newNode;
+  }
+
+
+  public void Display(){
+    if(hade==null){
+      System.out.println("List is empty");
+      return;
+    }
+    Node currentNode=hade;
+    while(currentNode!=null){
+      System.out.print(currentNode.data+"->");
+      currentNode=currentNode.next;
+    }
+    System.out.println("null");
+  }
+
+  public void Accending(){
+    Node currentNode=hade,index=null;
+    int tem;
+    if(hade==null){
+      System.out.println("List is Empty");
+      return;
+    }
+    else{
+      while(currentNode!=null){
+        index=currentNode.next;
+        while(index!=null){
+          if(currentNode.data<index.data){
+            tem=index.data;
+            index.data=currentNode.data;
+            currentNode.data=tem;
+          }
+          index=index.next;
+        }
+        currentNode=currentNode.next;
+
+      }
+    }
+  }
+  public static void main(String[] args) {
+    test tt=new test();
+    tt.Add(3);
+    tt.Add(2);
+    tt.Add(5);
+    tt.Add(4);
+    tt.Display();
+    tt.Accending();
+    tt.Display();
+  }
+  
+}
