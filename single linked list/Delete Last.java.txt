@@ -1,0 +1,77 @@
+import java.util.Currency;
+
+class test
+{
+      Node hade;
+
+      class Node
+      {
+            int data;
+            Node next;
+
+            Node(int data)
+            {
+                  this.data=data;
+                  this.next=null;
+            }
+      }
+      public void addFirst(int data)
+      {
+            Node newNode=new Node(data);
+
+            if(hade==null)
+            {
+                 hade=newNode;
+                 return;
+            }
+
+            newNode.next=hade;
+            hade=newNode;
+            
+      }
+      public void  DeleteLast()
+
+      {     
+            if(hade==null)
+            {
+                  return;
+            }
+
+           Node firstNode=hade;
+           Node SecondNode=hade.next;
+
+           while(SecondNode.next!=null){
+                 SecondNode=SecondNode.next;
+                 firstNode=firstNode.next;
+           }
+           firstNode.next=null;
+           
+      }
+
+
+      public void display()
+      {
+            if(hade==null)
+            {
+                  return;
+            }
+            Node currentNode=hade;
+            while(currentNode!=null){
+
+                  System.out.print(currentNode.data+"->");
+                  currentNode=currentNode.next;
+            }
+            System.out.println("null");
+
+      }
+      public static void main(String[] args) {
+            test tt=new test();
+            tt.addFirst(3);
+            tt.addFirst(5);
+            tt.addFirst(12);
+            tt.display();
+            tt.DeleteLast();
+            tt.display();
+
+      }
+}

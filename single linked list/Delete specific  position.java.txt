@@ -1,0 +1,96 @@
+import java.util.Currency;
+
+class test
+{
+      Node hade;
+
+      class Node
+      {
+            int data;
+            Node next;
+
+            Node(int data)
+            {
+                  this.data=data;
+                  this.next=null;
+            }
+      }
+      public void addFirst(int data)
+      {
+            Node newNode=new Node(data);
+
+            if(hade==null)
+            {
+                 hade=newNode;
+                 return;
+            }
+
+            newNode.next=hade;
+            hade=newNode;
+            
+      }
+      public void  Delete_specific_position(int Location)
+
+      {    
+            if(Location<1){
+                  System.out.println("Invalied location");
+                  return;
+            }
+            else if(Location==1)
+            {
+                  Node CurrentNode=hade;
+                  hade=hade.next;
+                  CurrentNode=null;
+            }
+            else{
+                  Node firstNode=hade;
+
+                  for(int i=1;i<Location-1;i++){
+                        if(firstNode!=null){
+                              firstNode=firstNode.next;
+                        }
+                  }
+                  if(firstNode!=null&&firstNode.next!=null){
+                        Node dltNode=firstNode.next;
+                        firstNode.next=firstNode.next.next;
+                        dltNode=null;
+                  }
+                  else{
+                        System.out.println("List is empty");
+                  }
+            }
+           
+
+
+
+
+
+      }
+
+
+      public void display()
+      {
+            if(hade==null)
+            {
+                  return;
+            }
+            Node currentNode=hade;
+            while(currentNode!=null){
+
+                  System.out.print(currentNode.data+"->");
+                  currentNode=currentNode.next;
+            }
+            System.out.println("null");
+
+      }
+      public static void main(String[] args) {
+            test tt=new test();
+            tt.addFirst(3);
+            tt.addFirst(5);
+            tt.addFirst(12);
+            tt.display();
+            tt.Delete_specific_position(3);
+            tt.display();
+
+      }
+}
